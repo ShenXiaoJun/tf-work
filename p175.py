@@ -15,7 +15,7 @@ with tf.Session() as sess:
 	#with tf.gfile.GFile("/home/shenxj/tf-work/output/000000.png", "wb") as f:
 		#f.write(encoded_image.eval())
 	
-	img_data_resized = tf.image.resize_images(img_data,[300,300],method=0)
-	print img_data_resized.get_shape()
-	plt.imshow(img_data_resized.eval())
+	resized = tf.image.resize_images(img_data,[300,300],method=0)
+	print resized.get_shape()
+	plt.imshow(resized.eval())
 	plt.show()
