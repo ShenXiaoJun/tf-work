@@ -15,7 +15,7 @@ maintain_averages_op = ema.apply([v1])
 
 with tf.Session() as sess:
     # 初始化所有变量
-    init_op = tf.initialize_all_variables
+    init_op = tf.initialize_all_variables()
     sess.run(init_op)
 
     # 通过ema.average(v1)获取滑动平均之后变量的取值。在初始化之后变量v1的值和v1的
@@ -40,4 +40,4 @@ with tf.Session() as sess:
 
     # 再次更新滑动平均值，得到的新滑动平均值为0.99x4.555+0.01x10=4.60945
     sess.run(maintain_averages_op)
-    print sess.run(v1,ema.average(v1))
+    print sess.run([v1,ema.average(v1)])
