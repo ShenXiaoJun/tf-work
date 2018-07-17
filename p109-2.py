@@ -5,7 +5,7 @@ v1 = tf.get_variable("v",[1])
 # 输出v:0."v"为变量的名称,":0"表示这个变量是生成变量这个运算的第一个结果
 print v1.name
 
-with tf.get_variable_scope("foo"):
+with tf.variable_scope("foo"):
     v2 = tf.get_variable("v",[1])
     # 输出foo/v:0。在tf.variable_scope中创建的变量，名称前面会加入命名空间的名称，
     # 并通过/来分隔命名空间的名称和变量的名称
