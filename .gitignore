@@ -4,3 +4,5 @@ work
 mnist
 model
 datasets
+tmp
+train_dir
