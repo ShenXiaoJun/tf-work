@@ -44,7 +44,7 @@ with tf.Session() as sess:
 
 with tf.Session() as sess:
     img_data = tf.image.decode_jpeg(image_raw_data)
-    
+
     boxes = tf.constant([[[0.05, 0.05, 0.9, 0.7], [0.35, 0.47, 0.5, 0.56]]])
 
     # sample_distorted_bounding_box要求输入图片必须是实数类型。
