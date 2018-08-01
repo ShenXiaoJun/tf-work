@@ -28,20 +28,11 @@ with tf.Session() as sess:
     # with tf.gfile.GFile("/home/shenxj/tf-work/datasets/cat-fix.jpg", "wb") as f:
     #     f.write(encoded_image.eval())
 
-    # 通过tf.image.resize_image_with_crop_or_pad函数调整图像的大小。这个函数的
-    # 第一个参数为原始图像，后面两个参数是调整后的目标图像大小。如果原始图像的尺寸大于目标
-    # 图像，那么这个函数会自动截取原始图像中居中的部分。如果目标图像
-    # 大于原始图像，这个函数会自动在原始图像的四周填充全0背景。因为原
-    # 始图像的大小为1797x2673，所以下面的第一个命令会自动剪裁，而第二个命令为自动填充
-    croped = tf.image.resize_image_with_crop_or_pad(img_data, 1000, 1000)
-    plt.imshow(croped.eval())
+    # 以一定概率上下翻转图像
+    flipped = tf.image.random_flip_up_down(img_data)
+    plt.imshow(flipped.eval())
     plt.show()
-    padded = tf.image.resize_image_with_crop_or_pad(img_data, 3000, 3000)
-    plt.imshow(padded.eval())
-    plt.show()
-
-    # 通过tf.image.central)crop函数可以按比例裁剪图像。这个函数的第一个参数为原始图
-    # 像，第二个为调整比例，这个比例需要是一个（0,1]的实数
-    central_cropped = tf.image.central_crop(img_data, 0.5)
-    plt.imshow(central_cropped.eval())
+    # 以一定概率左右翻转图像
+    flipped = tf.image.random_flip_left_right(img_data)
+    plt.imshow(flipped.eval())
     plt.show()
