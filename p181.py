@@ -39,3 +39,30 @@ with tf.Session() as sess:
     result = tf.squeeze(result, 0)
     plt.imshow(result.eval())
     plt.show()
+
+####
+
+with tf.Session() as sess:
+    img_data = tf.image.decode_jpeg(image_raw_data)
+    
+    boxes = tf.constant([[[0.05, 0.05, 0.9, 0.7], [0.35, 0.47, 0.5, 0.56]]])
+
+    # sample_distorted_bounding_box要求输入图片必须是实数类型。
+    image_float = tf.image.convert_image_dtype(img_data, tf.float32)
+
+    begin, size, bbox_for_draw = tf.image.sample_distorted_bounding_box(
+        tf.shape(image_float), bounding_boxes=boxes, min_object_covered=0.4)
+
+    # 截取后的图片
+    distorted_image = tf.slice(image_float, begin, size)
+    plt.imshow(distorted_image.eval())
+    plt.show()
+
+    # 在原图上用标注框画出截取的范围。由于原图的分辨率较大（2673x1797)，生成的标注框
+    # 在Jupyter Notebook上通常因边框过细而无法分辨，这里为了演示方便先缩小分辨率。
+    image_small = tf.image.resize_images(image_float, [180, 267], method=0)
+    batchced_img = tf.expand_dims(image_small, 0)
+    image_with_box = tf.image.draw_bounding_boxes(batchced_img, bbox_for_draw)
+    print(bbox_for_draw.eval())
+    plt.imshow(image_with_box[0].eval())
+    plt.show()
