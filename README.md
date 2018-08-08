@@ -1,7 +1,8 @@
 # tf-work
-p182.py----------从图像片段截取，到图像大小调整在到图像翻转及色彩调整的整个图像与处理过程
-p184.py----------操作队列
-p187.py----------多线程控制tf.Coordinator
-p188.py----------tf.Coordinator 和 tf.QueueRunner管理多线程队列操作
-p190/py----------生成样例数据
-
+p182.py----------从图像片段截取，到图像大小调整在到图像翻转及色彩调整的整个图像与处理过程</r>
+p184.py----------操作队列</r>
+p187.py----------多线程控制tf.Coordinator</r>
+p188.py----------tf.Coordinator 和 tf.QueueRunner管理多线程队列操作</r>
+p190.py----------生成样例数据</r>
+p191.py----------tf.train_filenames_once函数和tf.train.string_input_producer 函数的使用</r>
+p192.py----------组合训练数据(batching, tf.train.batch)</r>
