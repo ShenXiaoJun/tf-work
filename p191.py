@@ -37,3 +37,4 @@ with tf.Session() as sess:
         print sess.run([features['i'], features['j']])
     coord.request_stop()
     coord.join(threads)
+
