@@ -82,9 +82,13 @@ capacity = 1000 + 3 * batch_size
 # 使用tf.train.shuffle_batch函数来组合样例。tf.train.shuffle_batch函数
 # 的参数大部分和tf.train.batch函数相似，但是min_after_dequeue参数是
 # tf.train.shuffle_batch函数特有的。min_after_queue参数限制了出队时队列中元
-# 素的最少个数。当队列中元素太少时，随机打乱样例顺序的作用就不大了。
-example_batch, label_batch = tf.train.batch(
-    [example, label], batch_size=batch_size, capacity=capacity
+# 素的最少个数。当队列中元素太少时，随机打乱样例顺序的作用就不大了。所以
+# tf.train.shuffle_batch函数提供了限制出队时最少元素的个数来保证随机打乱顺序的
+# 作用。当出队函数被调用但是队列中元素不够时，出队操作将等待更多的元素入队才会完成。
+# 如果min_after_dequeue参数被设定，capacity也应该相应调整来满足性能需求
+example_batch, label_batch = tf.train.shuffle_batch(
+    [example, label], batch_size=batch_size,
+    capacity=capacity, min_after_dequeue=30
 )
 
 with tf.Session() as sess:
