@@ -90,8 +90,7 @@ predictions = tf.argmax(test_logit, axis=-1, output_type=tf.int32)
 # 声明会话并运行神经网络的优化过程。
 with tf.Session() as sess:
     # 初始化变量。
-    sess.run((tf.global_variables_initializer(),
-              tf.local_variables_initializer()))
+    sess.run((tf.global_variables_initializer(), tf.local_variables_initializer()))
 
     # 初始化训练数据的迭代器。
     sess.run(iterator.initializer)
@@ -99,7 +98,8 @@ with tf.Session() as sess:
     # 循环进行训练，直到数据集完成输入、抛出OutOfRangeError错误。
     while True:
         try:
-            sess.run(train_step)
+            sess.run(tf.train.GradientDescentOptimizer(0.01).minimize(loss))
+            #print("loss_value", loss_value)
         except tf.errors.OutOfRangeError:
             break
 
@@ -118,5 +118,6 @@ with tf.Session() as sess:
 
 # 计算准确率
 correct = [float(y == y_) for (y, y_) in zip(test_results, test_labels)]
+print ("len(correct), sum(correct)", len(correct), sum(correct))
 accuracy = sum(correct) / len(correct)
 print("Test accuracy is:", accuracy)
