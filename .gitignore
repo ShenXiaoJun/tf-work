@@ -6,3 +6,4 @@ model
 datasets
 tmp
 train_dir
+ptb

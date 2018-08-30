@@ -12,3 +12,5 @@ p195-2.py--------完整的tf输入数据处理框架,github源码<br>
 p204.py----------简单的循环神经网络前向传播过程<br>
 p207.py----------tensorflow中实现使用LSTM结构的循环神经网络的前向传播过程<br>
 p209.py----------tensorflow使用MultiRNNCell类来实现深层循环神经网络的前向传播过程<br>
+p211.py----------tensorflow实现带dropout的循环神经网络<br>
+p215.py----------tensorflow ptb_raw_data函数读取PTB的原始数据，并将原始数据中的单词转化为单词ID<br>
