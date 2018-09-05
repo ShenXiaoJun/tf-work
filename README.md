@@ -8,7 +8,8 @@ p191.py----------tf.train_filenames_once函数和tf.train.string_input_producer 
 p192.py----------组合训练数据(batching, tf.train.batch & tf.train.shuffle_batch)<br>
 p195.py----------完整的tf输入数据处理框架<br>
 p195-2.py--------完整的tf输入数据处理框架,github源码<br>
-#8
+# 8 
+<br>
 p204.py----------简单的循环神经网络前向传播过程<br>
 p207.py----------tensorflow中实现使用LSTM结构的循环神经网络的前向传播过程<br>
 p209.py----------tensorflow使用MultiRNNCell类来实现深层循环神经网络的前向传播过程<br>
